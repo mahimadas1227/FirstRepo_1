@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mahima Das — Geeky CV</title>
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f1724; --accent:#ffcc00; --muted:#9aa7bf; --glass: rgba(255,255,255,0.04);
+      --neon1: #7ef0ff; --neon2:#ff7ef0;
+      --mono: 'Courier New',monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:var(--mono);background:linear-gradient(180deg,#071124 0%,#071020 50%, #041018 100%);color:#dbe8ff}
+    /* pixel stars */
+    body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(#ffffff 1px, transparent 1px);background-size:40px 40px;opacity:0.04;pointer-events:none}
+
+    .wrap{max-width:1000px;margin:40px auto;padding:28px;border-radius:16px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(2,6,23,0.7);display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start}
+
+    /* left column - card */
+    .card{padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+    .avatar-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .avatar{width:160px;height:160px;border-radius:18px;overflow:hidden;border:6px solid rgba(0,0,0,0.6);background:linear-gradient(90deg,var(--neon1),var(--neon2));padding:6px;box-shadow:0 6px 20px rgba(0,0,0,0.6);transform:rotate(-6deg);animation:float 3s ease-in-out infinite}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.1)}
+    @keyframes float{0%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(-2deg)}100%{transform:translateY(0) rotate(-6deg)}}
+
+    h1{font-size:20px;margin:0;letter-spacing:1px}
+    h2{font-size:12px;margin:0;color:var(--muted);font-weight:400}
+    .tagline{margin-top:6px;color:var(--muted);font-size:13px;text-align:center}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.02);font-size:12px;color:#cfe9ff}
+
+    .panel{margin-top:16px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02))}
+    .panel h3{margin:0 0 8px 0;font-size:13px}
+    .skill{display:flex;align-items:center;gap:8px;margin:8px 0}
+    .bar{flex:1;height:10px;border-radius:10px;background:rgba(255,255,255,0.04);overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--neon1),var(--neon2));width:0%;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* right column - content */
+    .content{padding:22px;border-radius:12px;background:repeating-linear-gradient(45deg, rgba(255,255,255,0.005), rgba(255,255,255,0.005) 2px, transparent 2px, transparent 8px);border:1px solid rgba(255,255,255,0.02)}
+    nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+    .btn{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:#dff6ff;font-size:13px}
+    .btn.active{background:linear-gradient(90deg, rgba(126,240,255,0.06), rgba(255,126,240,0.06));box-shadow:0 6px 18px rgba(0,0,0,0.4);border-color:rgba(255,255,255,0.08)}
+
+    section{animation:fadeIn .6s ease;min-height:280px}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    .resume-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+    .role{font-size:15px;margin:0}
+    .org{font-size:13px;color:var(--muted)}
+
+    .tech-grid{display:flex;gap:8px;flex-wrap:wrap}
+    .tech{padding:6px 8px;background:rgba(255,255,255,0.02);border-radius:8px;font-size:13px}
+
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+    /* nintendo-ish joystick */
+    .joy{position:fixed;right:22px;bottom:22px;background:linear-gradient(180deg,#111827,#0b1220);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;gap:10px;align-items:center;z-index:80}
+    .stick{width:46px;height:46px;border-radius:8px;background:linear-gradient(180deg,#0b1220,#0f1724);display:grid;place-items:center;border:2px solid rgba(255,255,255,0.03);box-shadow:inset 0 -6px 14px rgba(0,0,0,0.6)}
+    .stick > button{width:28px;height:28px;border-radius:6px;background:linear-gradient(180deg,#202836,#0d1420);border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+
+    /* playful pixel heart */
+    .love{display:flex;gap:8px;align-items:center}
+    .heart{width:18px;height:18px;transform:scale(1);animation:beat 1s infinite}
+    @keyframes beat{0%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(1)}100%{transform:scale(1)} }
+
+    /* responsive */
+    @media (max-width:880px){.wrap{grid-template-columns:1fr;padding:16px}.joy{right:10px;bottom:10px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <aside class="card">
+      <div class="avatar-wrap">
+        <div class="avatar" title="Mahima Das">
+          <img src="https://raw.githubusercontent.com/mahimadas1227/FirstRepo_1/refs/heads/main/dogcute.png" alt="Mahima Das - profile" />
+        </div>
+        <div style="text-align:center">
+          <h1>Mahima Das</h1>
+          <h2>PhD Candidate • Researcher • Data nerd</h2>
+          <div class="tagline">I make data sing and stories matter — with a little 8‑bit magic ✨</div>
+        </div>
+      </div>
+
+      <div class="chips" style="margin-top:14px">
+        <div class="chip">Research</div>
+        <div class="chip">SPSS</div>
+        <div class="chip">Psychometrics</div>
+        <div class="chip">Mixed Methods</div>
+      </div>
+
+      <div class="panel" style="margin-top:14px">
+        <h3>Quick Info</h3>
+        <div class="small">Location: United Kingdom</div>
+        <div class="small">Email: <a href="mailto:mahima@example.com" style="color:var(--neon1)">mahima@example.com</a></div>
+        <div class="small">Website: <span style="color:var(--muted)">github.com/mahimadas1227</span></div>
+      </div>
+
+      <div class="panel">
+        <h3>Skills</h3>
+        <div class="skill"><div class="small">Quant Methods</div><div class="bar" style="margin-left:8px"><i style="width:86%"></i></div></div>
+        <div class="skill"><div class="small">SPSS / R</div><div class="bar" style="margin-left:8px"><i style="width:82%"></i></div></div>
+        <div class="skill"><div class="small">Psychometrics</div><div class="bar" style="margin-left:8px"><i style="width:78%"></i></div></div>
+        <div class="skill"><div class="small">Writing & Pub</div><div class="bar" style="margin-left:8px"><i style="width:80%"></i></div></div>
+      </div>
+
+      <div class="panel">
+        <h3>Things I love</h3>
+        <div class="love"><svg class="heart" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg"><path d="M23.6 0c-2.7 0-5 1.8-6 3.9C16.4 1.8 14.1 0 11.4 0 5 0 0 4.6 0 11.1c0 7.5 9.5 12.8 16 17.9 6.5-5.1 16-10.4 16-17.9C32 4.6 27 0 23.6 0z" fill="url(#g)"/></svg><div>
+          <div style="font-size:13px">K-pop music 🎧</div>
+          <div style="font-size:12px;color:var(--muted)">Also: pixel art, retro games, data viz</div>
+        </div></div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <nav>
+        <button class="btn active" data-target="about">About</button>
+        <button class="btn" data-target="experience">Experience</button>
+        <button class="btn" data-target="education">Education</button>
+        <button class="btn" data-target="skills">Skills</button>
+        <button class="btn" data-target="contact">Contact</button>
+      </nav>
+
+      <section id="about">
+        <h3 style="margin-top:0">About</h3>
+        <p>Hi — I'm Mahima, a PhD researcher and trainee counsellor exploring childhood maltreatment, alexithymia and related measurement challenges. I combine rigorous quantitative methods with clear writing to produce reproducible, useful research. I love k‑pop, retro games, and using playful design to make complex findings approachable.</p>
+
+        <h3 style="margin-top:12px">Highlights</h3>
+        <ul>
+          <li>Experienced with SPSS, R, and psychometric scale development.</li>
+          <li>Published research and conference presentations in trauma and measurement.</li>
+          <li>Skilled at pre-registration, reproducible pipelines, and mixed-methods designs.</li>
+        </ul>
+      </section>
+
+      <section id="experience" style="display:none">
+        <h3>Experience</h3>
+        <div class="resume-row">
+          <div>
+            <p class="role">Trainee Counsellor — That Happiness Project</p>
+            <div class="org">Online platform (current)</div>
+          </div>
+          <div class="small">2024 — Present</div>
+        </div>
+        <hr style="opacity:0.04;margin:10px 0" />
+        <div class="resume-row">
+          <div>
+            <p class="role">Research Assistant</p>
+            <div class="org">Departmental projects — prevalence & scale development</div>
+          </div>
+          <div class="small">2019 — 2024</div>
+        </div>
+      </section>
+
+      <section id="education" style="display:none">
+        <h3>Education</h3>
+        <div class="resume-row">
+          <div>
+            <p class="role">MRes in Psychological Methods</p>
+            <div class="org">Institution name</div>
+          </div>
+          <div class="small">2024 — Present</div>
+        </div>
+        <hr style="opacity:0.04;margin:10px 0" />
+        <div class="resume-row">
+          <div>
+            <p class="role">MSc Psychology</p>
+            <div class="org">Institution name</div>
+          </div>
+          <div class="small">Year — Year</div>
+        </div>
+      </section>
+
+      <section id="skills" style="display:none">
+        <h3>Technical toolkit</h3>
+        <div class="tech-grid">
+          <div class="tech">SPSS</div>
+          <div class="tech">R (tidyverse)</div>
+          <div class="tech">Psychometrics</div>
+          <div class="tech">SEM (lavaan)</div>
+          <div class="tech">Pre-registration</div>
+          <div class="tech">Open Science</div>
+        </div>
+      </section>
+
+      <section id="contact" style="display:none">
+        <h3>Contact</h3>
+        <p>Interested in collaborating? Email <a href="mailto:mahima@example.com" style="color:var(--neon2)">mahima@example.com</a> or connect on <span style="color:var(--muted)">github.com/mahimadas1227</span></p>
+        <footer>Download: <a href="#" id="downloadLink" style="color:var(--neon1)">Save this CV as HTML</a></footer>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="joy" aria-hidden>
+    <div class="stick"><button title="About" data-target="about">A</button></div>
+    <div class="stick"><button title="Exp" data-target="experience">E</button></div>
+    <div class="stick"><button title="Edu" data-target="education">D</button></div>
+  </div>
+
+  <script>
+    // simple router
+    const buttons = document.querySelectorAll('nav .btn');
+    const sticks = document.querySelectorAll('.joy button');
+    function show(id){
+      document.querySelectorAll('main section').forEach(s=>s.style.display='none');
+      const el = document.getElementById(id);
+      if(el) el.style.display='block';
+      buttons.forEach(b=>b.classList.toggle('active', b.dataset.target===id));
+    }
+    buttons.forEach(b=>b.addEventListener('click', ()=>show(b.dataset.target)));
+    sticks.forEach(s=>s.addEventListener('click', ()=>show(s.dataset.target)));
+
+    // animate skill bars when visible
+    function animateBars(){
+      document.querySelectorAll('.bar > i').forEach(i=>{
+        const w = i.style.width;
+        i.style.width = '0%';
+        setTimeout(()=>i.style.width = w, 50);
+      })
+    }
+    show('about'); animateBars();
+
+    // download self-contained html
+    document.getElementById('downloadLink').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const html = `<!doctype html>\n`+document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'mahima-das-cv.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // subtle neon pulse for avatar border
+    setInterval(()=>{
+      const av = document.querySelector('.avatar');
+      av.style.filter = `drop-shadow(0 6px 12px rgba(255,126,240,${0.06+Math.random()*0.06}))`;
+    }, 800);
+
+    // accessibility: keyboard nav (1-5)
+    window.addEventListener('keydown', (e)=>{
+      const map = {'Digit1':'about','Digit2':'experience','Digit3':'education','Digit4':'skills','Digit5':'contact'};
+      if(map[e.code]) show(map[e.code]);
+    });
+  </script>
+</body>
+</html>
